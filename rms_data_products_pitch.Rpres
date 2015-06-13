@@ -1,0 +1,48 @@
+GARCH Models with EU Stock Market Data
+========================================================
+author: Richard M. Smith
+date: June 13, 2015
+css: custom.css
+
+Overview
+========================================================
+
+Using the `EuStockMarkets` data in the **utils** package, we provide a method for running [GARCH](https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity#GARCH) models from the **tseries** package on windows of time for the 4 major European stock markets.
+
+The application can be found on RStudio's shiny server [here]()
+
+EU Stock Markets Data Summary
+========================================================
+
+Daily closing prices 1991-1998 for major European stock indices.
+```{r,echo=FALSE}
+plot(EuStockMarkets, main = "")
+```
+
+***
+
+Basic Data Structure
+```{r,echo=FALSE}
+str(EuStockMarkets)
+```
+
+
+Application Overview
+========================================================
+
+1. First pick the date range you want to examine.
+  - First choose a year and month, then a specific date
+  - Click outside the date picker to close the window
+2. Choose which of the 4 European markets you would like to examine
+
+The plot will automatically update with the black line representing the actual series and a dotted red line showing a GARCH model using `predict.garch` from the **[tseries](http://cran.r-project.org/web/packages/tseries/tseries.pdf)** package.
+
+Notes
+========================================================
+
+- Due to the nature of using `window`, the plots render only full months regardless of the specific date picked.
+- Indices:
+  - DAX: Germany
+  - SMI: Switzerland
+  - CAC: France
+  - FTSE: UK
